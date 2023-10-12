@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service BankTransactionsService {
+  rpc MsgDelivery (CustomerRequest) returns (responseData) {}
+}
+
+message eventData{
+  int32 id = 1;
+  string interface = 2;
+  optional int32 money = 3;
+}
+
+message CustomerRequest {
+  int32 id = 1;
+  eventData event = 2;
+}
+
+message responseData{
+    string interface = 1;
+    optional string result = 2;
+    optional int32 balance = 3;
+
+}
