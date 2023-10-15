@@ -1,15 +1,6 @@
-import grpc
 import json
-import example_pb2
-import example_pb2_grpc
-from run_branch import getPort
 from Customer import Customer
 
-# def run_client():
-#     channel = grpc.insecure_channel('localhost:50001')
-#     stub = example_pb2_grpc.GreeterStub(channel)
-#     response = stub.SayHello(example_pb2.HelloRequest(name='Raghav'))
-#     print('Received from server:', response.message)
 
 f = open("input.json")
 input = json.load(f)

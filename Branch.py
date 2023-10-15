@@ -1,8 +1,6 @@
 import grpc
 from example_pb2 import responseData
-from concurrent.futures import ThreadPoolExecutor
 import example_pb2_grpc
-from utils import getPort
 
 
 
@@ -40,8 +38,6 @@ class Branch(example_pb2_grpc.BankTransactionsServiceServicer):
         for stub in self.stubList:
             request.event.interface = "branch/withdraw"
             response = stub.MsgDelivery(request)
-            # if response != "success":
-            #     break
     def Deposit(self,request):
         self.balance += request.event.money
         for stub in self.stubList:
@@ -77,6 +73,6 @@ class Branch(example_pb2_grpc.BankTransactionsServiceServicer):
                 response = self.Propogate_Deposit(event.money)
                 return responseData(interface= eventType,result = response)
         if response is not None:
-            return responseData(interface = eventType,result = "",balance = response)
+            return responseData(interface = eventType,balance = response)
         return responseData(interface = eventType,result = "success")
         
