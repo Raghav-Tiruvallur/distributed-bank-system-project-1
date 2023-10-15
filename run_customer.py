@@ -20,7 +20,7 @@ if __name__ == '__main__':
     with open("output.json", "w") as json_file:
         json_file.write("[\n")
         for i, item in enumerate(output):
-            json_file.write(json.dumps(item, indent=4))
+            json_file.write(json.dumps(item, indent = 4))
             if i < len(output) - 1:
                 json_file.write(",\n")  
             else:
